@@ -2,14 +2,12 @@ import json
 import os
 import pathlib
 
-script_dir = pathlib.Path(__file__).parent.resolve()
-
-local_path = f"locales"
+_script_dir = pathlib.Path(__file__).parent.resolve()
 default_language = "ru"
 
-languages = {
+languages = {}
 
-}
+default_text = "✍️"
 
 
 class Helper:
@@ -74,14 +72,16 @@ class Setup:
         pass
 
     @staticmethod
-    def localedir(localedir: str) -> str:
-        local_path = localedir
-        return local_path
-
-    @staticmethod
     def language(language: str) -> str:
+        global default_language
         default_language = language
         return default_language
+
+    @staticmethod
+    def emoji(text: str) -> str:
+        global default_text
+        default_text = text
+        return default_text
 
 
 class MSG:
@@ -95,4 +95,5 @@ class MSG:
         try:
             return language[msg]
         except Exception as e:
-            raise "Необнаружено языкового ключа!"
+            print(e)
+            return default_text
