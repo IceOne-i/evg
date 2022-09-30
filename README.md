@@ -1,4 +1,10 @@
 
+## Features
+- Dicord Interactions Translator
+- Optimization
+- Easy to use
+
+
 ## Installation
 
  - Install evg with pip
