@@ -62,8 +62,11 @@ class Helper:
         return os.path.isdir(a)
 
     @staticmethod
-    def check_file(path: str) -> bool:
+    def check_file(path: str, type: str = None) -> bool:
         a = f'{path}'
+        if type is not None:
+            if not path.endswith(type):
+                return False
         return os.path.isfile(a)
 
 
