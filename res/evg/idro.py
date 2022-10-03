@@ -81,7 +81,7 @@ class Setup:
         return default_language
 
     @staticmethod
-    def emoji(text: str) -> str:
+    def text(text: str) -> str:
         global default_text
         default_text = text
         return default_text
@@ -93,10 +93,10 @@ class MSG:
         if self.language not in languages:
             self.language = default_language
 
-    def msg(self, msg: str) -> str:
+    def msg(self, msg: str, **kwargs) -> str:
         language: dict = languages[self.language]
         try:
-            return language[msg]
+            return language[msg].format(**kwargs)
         except Exception as e:
             print(e)
             return default_text
