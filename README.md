@@ -29,6 +29,7 @@ _ = evg.MSG(Interaction.locale).msg
 print(_("hello1"))
 ```
 * Output: Hello world!
+
 OR
 ```python
 import evg
