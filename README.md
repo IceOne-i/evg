@@ -38,7 +38,7 @@ async def hi(ctx: Interaction) -> PartialInteractionMessage:
     _ = evg.MSG(ctx.locale).msg
     return await ctx.send(text=_("hello1"))
 ```
-* Output: Hello Nik!
+* Output: Hello world!
 ### Kwargs
 ```python
 import evg
