@@ -1,6 +1,7 @@
 import json
 import os
 import pathlib
+from typing import Union
 
 _script_dir = pathlib.Path(__file__).parent.resolve()
 default_language = "ru"
@@ -93,10 +94,10 @@ class MSG:
         if self.language not in languages:
             self.language = default_language
 
-    def msg(self, msg: str, **kwargs) -> str:
+    def msg(self, msg: str, *args, **kwargs) -> str:
         language: dict = languages[self.language]
         try:
-            return language[msg].format(**kwargs)
+            return language[msg].format(args=args, kwargs=kwargs)
         except Exception as e:
             print(e)
             return default_text
