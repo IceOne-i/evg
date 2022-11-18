@@ -31,7 +31,11 @@ else:
         categories = Helper.files(f"{_local_path}/{language}", type=".json")
         for category in categories:
             category_path = f"{_local_path}/{language}/{category}"
-            with open(category_path, 'r', encoding='utf-8') as _f:
-                inf = json.load(_f)
-                _f.close()
-            languages[language].update(inf)
+            try:
+                with open(category_path, 'r', encoding='utf-8') as _f:
+                    inf = json.load(_f)
+                    _f.close()
+                languages[language].update(inf)
+            except json.decoder.JSONDecodeError as e:
+                print(f"ВНИМАНИЕ! -> Файл {category} не был успешно загружен!\n"
+                      f"ОШИБКА: {e}")
