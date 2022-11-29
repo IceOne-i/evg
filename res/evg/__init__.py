@@ -1,8 +1,4 @@
-import os
-import json
-
 from .idro import *
-
 _local_path = f"locales"
 
 if not Helper.check_directory(path=_local_path):

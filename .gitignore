@@ -2,3 +2,5 @@
 setup.py
 dist
 evg.egg-info
+*.xml
+*.iml
