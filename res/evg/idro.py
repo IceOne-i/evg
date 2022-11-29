@@ -94,18 +94,9 @@ class MSG:
         if self.language not in languages:
             self.language = default_language
 
-    def msg(self, msg: str, *args, **kwargs) -> Union[str, dict, list]:
+    def msg(self, msg: str):
         language: dict = languages[self.language]
-        if (args is not None) or (kwargs is not None):
-            try:
-                return language[msg].format(args=args, kwargs=kwargs)
-            except KeyError:
-                return default_text
-            except Exception as e:
-                print(e)
-                return language[msg]
-        else:
-            try:
-                return language[msg]
-            except KeyError:
-                return default_text
+        try:
+            return language[msg]
+        except KeyError:
+            return default_text

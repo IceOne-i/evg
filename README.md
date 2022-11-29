@@ -18,8 +18,7 @@
 ### File - locales/ru/example.json
 ```json
 {
-    "hello1": "Hello world!",
-    "hello2": "Hello {name}!"
+    "hello1": "Hello world!"
 }
 ```
 ### Base
@@ -39,15 +38,6 @@ async def hi(ctx: Interaction) -> PartialInteractionMessage:
     return await ctx.send(text=_("hello1"))
 ```
 * Output: Hello world!
-### Kwargs
-```python
-import evg
-import asyncio
-from nextcord import Interaction, PartialInteractionMessage
-async def hi(ctx: Interaction, **kwargs) -> PartialInteractionMessage:
-    _ = evg.MSG(ctx.locale).msg
-    return await ctx.send(text=_("hello2", **kwargs))
-asyncio.run(hi(ctx, name="Nik"))
 ```
 * Output: Hello Nik!
 ### Change settings
