@@ -39,7 +39,6 @@ async def hi(ctx: Interaction) -> PartialInteractionMessage:
 ```
 * Output: Hello world!
 ```
-* Output: Hello Nik!
 ### Change settings
 #### Default language
 ```python
