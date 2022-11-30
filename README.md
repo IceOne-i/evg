@@ -38,7 +38,7 @@ async def hi(ctx: Interaction) -> PartialInteractionMessage:
     return await ctx.send(text=_("hello1"))
 ```
 * Output: Hello world!
-```
+
 ### Change settings
 #### Default language
 ```python
