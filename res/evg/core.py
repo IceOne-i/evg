@@ -1,10 +1,8 @@
-import json
 import os
 import pathlib
-from typing import Union
 
 _script_dir = pathlib.Path(__file__).parent.resolve()
-default_language = "ru"
+default_language = "en-US"
 
 languages = {}
 
@@ -34,25 +32,25 @@ class Helper:
         return directories
 
     @staticmethod
-    def count_files(path: str, type: str = None) -> int:
+    def count_files(path: str, file_type: str = None) -> int:
         a = f'{path}'
         count = 0
         for x in os.listdir(a):
             if Helper.check_file(f"{path}/{x}"):
-                if type is not None:
-                    if not x.endswith(type):
+                if file_type is not None:
+                    if not x.endswith(file_type):
                         continue
                 count += 1
         return count
 
     @staticmethod
-    def files(path: str, type: str = None) -> list:
+    def files(path: str, file_type: str = None) -> list:
         a = f'{path}'
         files = []
         for x in os.listdir(a):
             if Helper.check_file(f"{path}/{x}"):
-                if type is not None:
-                    if not x.endswith(type):
+                if file_type is not None:
+                    if not x.endswith(file_type):
                         continue
                 files.append(x)
         return files
@@ -63,10 +61,10 @@ class Helper:
         return os.path.isdir(a)
 
     @staticmethod
-    def check_file(path: str, type: str = None) -> bool:
+    def check_file(path: str, file_type: str = None) -> bool:
         a = f'{path}'
-        if type is not None:
-            if not path.endswith(type):
+        if file_type is not None:
+            if not path.endswith(file_type):
                 return False
         return os.path.isfile(a)
 
