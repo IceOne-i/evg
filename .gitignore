@@ -1,6 +1,5 @@
 
 setup.py
-*.idea
 dist
 evg.egg-info
 *.xml
