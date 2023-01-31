@@ -1,6 +1,7 @@
 
 setup.py
 dist
+build
 evg.egg-info
 *.xml
 *.iml
