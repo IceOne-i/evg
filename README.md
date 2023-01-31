@@ -30,7 +30,6 @@ _ = evg.MSG("en-US").msg
 print(_("hello1"))
 ```
 * Output text: Hello world!
-
 OR
 ```python
 import evg
