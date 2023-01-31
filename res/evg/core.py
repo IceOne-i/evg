@@ -6,7 +6,7 @@ default_language = "en-US"
 
 languages = {}
 
-default_text = "✍️"
+default_text = "oOps"
 
 
 class Helper:
