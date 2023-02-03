@@ -3,8 +3,8 @@ import json
 _local_path = f"locales"
 
 if not Helper.check_directory(path=_local_path):
-    os.makedirs(f"{_local_path}/{default_language}")
-if Helper.count_directories(path=_local_path) == 0 or not Helper.check_directory(path=_local_path):
+    os.makedirs(f"{_local_path}")
+if Helper.count_directories(path=_local_path) == 0 or not Helper.check_directory(path=f"{_local_path}/{default_language}"):
     os.makedirs(f"{_local_path}/{default_language}")
 
 _directories = Helper.directories(_local_path)
