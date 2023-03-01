@@ -23,7 +23,7 @@ class Helper:
         return count
 
     @staticmethod
-    def directories(path: str) -> list:
+    def directories(path: str) -> list[str]:
         a = f'{path}'
         directories = []
         for x in os.listdir(a):
@@ -44,7 +44,7 @@ class Helper:
         return count
 
     @staticmethod
-    def files(path: str, file_type: str = None) -> list:
+    def files(path: str, file_type: str = None) -> list[str]:
         a = f'{path}'
         files = []
         for x in os.listdir(a):
@@ -92,9 +92,11 @@ class MSG:
         if self.language not in languages:
             self.language = default_language
 
-    def msg(self, msg: str):
+    def msg(self, msg: str, default: str = None):
         language: dict = languages[self.language]
         try:
             return language[msg]
         except KeyError:
+            if default is not None:
+                return default
             return default_text

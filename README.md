@@ -1,6 +1,6 @@
 
 ## Features
-- Dicord Interactions Translator
+- Dicord interactions translator
 - Optimization
 - Easy to use
 
@@ -13,7 +13,7 @@
   pip install evg
 ```
 - Set up a new folder /locales
-- Add language packs with the file <extension>.json according to the template /locales/en-US/<example>.json
+- Add language packs with the file extension ".json" according to the template /locales/en-US/example.json
 ## Examples
 ### File - locales/en-US/example.json
 ```json
@@ -29,7 +29,7 @@ import evg
 _ = evg.MSG("en-US").msg
 print(_("hello1"))
 ```
-* Output text: Hello world!
+* <b>Output text</b>:  Hello world!
  
 OR
 ```python
@@ -37,23 +37,24 @@ import evg
 from nextcord import Interaction, PartialInteractionMessage
 async def hi(ctx: Interaction) -> PartialInteractionMessage:
     _ = evg.MSG(ctx.locale).msg
-    return await ctx.send(text=_("hello1"))
+    return await ctx.send(content=_("hello1"))
 ```
-* Output text: Hello world!
+* <b>Output text</b>:  Hello world!
  
 OR
 ```python
 import evg
 from nextcord import Interaction, PartialInteractionMessage
+
 async def hi(ctx: Interaction) -> PartialInteractionMessage:
     _ = evg.MSG(ctx.locale).msg
-    return await ctx.send(text=(_("hello2")).format(name="Nikita"))
+    return await ctx.send(content=(_("hello2")).format(name="Nikita"))
 
 async def hi2(ctx: Interaction) -> PartialInteractionMessage:
     _ = evg.MSG(ctx.locale).msg
-    return await ctx.send(text=(_("hello3")).format("Bob"))
+    return await ctx.send(content=(_("hello3")).format("Bob"))
 ```
-Output text: 
+<b>Output text</b>: 
 * Hello Nikita!
 * Hello Bob!
 
@@ -68,5 +69,5 @@ evg.Setup.text("💕")
 ```
 ## Support
 
-For support, [VK](https://vk.com/id441692401); [DISCORD](https://discordapp.com/users/468846682843381760/).
+[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discordapp.com/users/468846682843381760/) [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:nikitabelan@gmail.com)
 
