@@ -68,6 +68,19 @@ class Helper:
                 return False
         return os.path.isfile(a)
 
+    @staticmethod
+    def check_language(language: str) -> bool:
+        if language in languages:
+            return True
+        return False
+
+    @staticmethod
+    def check_word(language: str, word: str) -> bool:
+        if Helper.check_language(language):
+            if word in languages[language]:
+                return True
+        return False
+
 
 class Setup:
     def __init__(self):
