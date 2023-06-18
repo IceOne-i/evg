@@ -84,6 +84,7 @@ class Helper:
 
 class Setup:
     def __init__(self):
+        print("Hay")
         pass
 
     @staticmethod
