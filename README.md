@@ -64,7 +64,7 @@ async def hi2(ctx: Interaction) -> PartialInteractionMessage:
 import evg
 evg.Setup.language("en-US")
 ```
-#### Default text if no translation was found
+#### Default text if no translation was found1
 ```python
 import evg
 evg.Setup.text("💕")
