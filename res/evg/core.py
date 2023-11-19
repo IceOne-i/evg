@@ -103,13 +103,16 @@ class MSG:
     def __init__(self, language: str):
         self.language = language
         if self.language not in languages:
+            global default_language
             self.language = default_language
 
     def msg(self, msg: str, default: str = None):
         language: dict = languages[self.language]
-        try:
-            return language[msg]
-        except KeyError:
+        answer = language.get(msg)
+        if answer is None:
             if default is not None:
                 return default
-            return default_text
+            else:
+                return languages[default_language].get(msg, default_text)
+        else:
+            return answer
