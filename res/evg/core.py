@@ -106,7 +106,7 @@ class MSG:
             global default_language
             self.language = default_language
 
-    def msg(self, msg: str, default: str = None):
+    def msg(self, msg: str, default: str = None, *args, **kwargs):
         language: dict = languages[self.language]
         answer = language.get(msg)
         if answer is None:
@@ -115,4 +115,4 @@ class MSG:
             else:
                 return languages[default_language].get(msg, default_text)
         else:
-            return answer
+            return answer.format(*args, **kwargs)
