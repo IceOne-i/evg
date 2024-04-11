@@ -1,5 +1,7 @@
 import os
 import pathlib
+from random import choice
+from typing import Union
 
 _script_dir = pathlib.Path(__file__).parent.resolve()
 default_language = "en-US"
@@ -106,7 +108,17 @@ class MSG:
             global default_language
             self.language = default_language
 
-    def msg(self, msg: str, default: str = None, *args, **kwargs):
+    @staticmethod
+    def __list_or_str(answer: Union[str, list], random: bool) -> str:
+        if type(answer) is list:
+            if random is True:
+                return choice(answer)
+            else:
+                return answer[0]
+        else:
+            return answer
+
+    def msg(self, msg: str, default: str = None, random: bool = True, *args, **kwargs):
         language: dict = languages[self.language]
         answer = language.get(msg)
         if answer is None:
@@ -115,4 +127,5 @@ class MSG:
             else:
                 return languages[default_language].get(msg, default_text)
         else:
+            answer = self.__list_or_str(answer=answer, random=random)
             return answer.format(*args, **kwargs)
