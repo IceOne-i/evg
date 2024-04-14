@@ -48,11 +48,11 @@ from nextcord import Interaction, PartialInteractionMessage
 
 async def hi(ctx: Interaction) -> PartialInteractionMessage:
     _ = evg.MSG(ctx.locale).msg
-    return await ctx.send(content=(_("hello2")).format(name="Nikita"))
+    return await ctx.send(content=(_("hello2", name="Nikita")))
 
 async def hi2(ctx: Interaction) -> PartialInteractionMessage:
     _ = evg.MSG(ctx.locale).msg
-    return await ctx.send(content=(_("hello3")).format("Bob"))
+    return await ctx.send(content=(_("hello3", "Bob")))
 ```
 <b>Output text</b>: 
 * Hello Nikita!
