@@ -123,9 +123,8 @@ class MSG:
         answer = language.get(msg)
         if answer is None:
             if default is not None:
-                return default
+                answer = default
             else:
-                return languages[default_language].get(msg, default_text)
-        else:
-            answer = self.__list_or_str(answer=answer, random=random)
-            return answer.format(*args, **kwargs)
+                answer = languages[default_language].get(msg, default_text)
+        answer = self.__list_or_str(answer=answer, random=random).format(*args, **kwargs)
+        return answer
