@@ -9,6 +9,7 @@ default_language = "en-US"
 languages = {}
 
 default_text = "oOps"
+default_file_types = ["json"]
 
 
 class Helper:
@@ -34,26 +35,18 @@ class Helper:
         return directories
 
     @staticmethod
-    def count_files(path: str, file_type: str = None) -> int:
-        a = f'{path}'
+    def count_files(path: str, file_types: Union[str, list[str], None] = None) -> int:
         count = 0
-        for x in os.listdir(a):
-            if Helper.check_file(f"{path}/{x}"):
-                if file_type is not None:
-                    if not x.endswith(file_type):
-                        continue
+        for x in os.listdir(path):
+            if Helper.check_file(f"{path}/{x}", file_types=file_types) is True:
                 count += 1
         return count
 
     @staticmethod
-    def files(path: str, file_type: str = None) -> list[str]:
-        a = f'{path}'
+    def files(path: str, file_types: Union[str, list[str], None] = None) -> list[str]:
         files = []
-        for x in os.listdir(a):
-            if Helper.check_file(f"{path}/{x}"):
-                if file_type is not None:
-                    if not x.endswith(file_type):
-                        continue
+        for x in os.listdir(path):
+            if Helper.check_file(f"{path}/{x}", file_types=file_types) is True:
                 files.append(x)
         return files
 
@@ -63,12 +56,28 @@ class Helper:
         return os.path.isdir(a)
 
     @staticmethod
-    def check_file(path: str, file_type: str = None) -> bool:
-        a = f'{path}'
-        if file_type is not None:
-            if not path.endswith(file_type):
-                return False
-        return os.path.isfile(a)
+    def check_file_type(file_name: str, file_types: Union[str, list[str], None] = None) -> bool:
+        if file_types is None:
+            file_types = default_file_types
+        else:
+            if type(file_types) is str:
+                file_types = [file_types]
+        for x in file_types:
+            if file_name.endswith(f".{x}"):
+                return True
+            else:
+                continue
+        return False
+
+    @staticmethod
+    def check_file(file: str, file_types: Union[str, list[str], None] = None) -> bool:
+        if os.path.isfile(file):
+            if file_types is not None:
+                if Helper.check_file_type(file, file_types) is False:
+                    return False
+            return True
+        else:
+            return False
 
     @staticmethod
     def check_language(language: str) -> bool:
